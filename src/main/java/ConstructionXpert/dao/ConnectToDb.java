@@ -6,8 +6,6 @@ import java.sql.SQLException;
 
 public class ConnectToDb {
 
-
-
         private final String dbURI = "jdbc:mysql://localhost:3306/ConstructionXpert?useSSL=false";
         private final String dbUsername = "root";
         private final String dbPassword = "admin";

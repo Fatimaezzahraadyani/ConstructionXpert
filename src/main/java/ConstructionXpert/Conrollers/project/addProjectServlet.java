@@ -10,7 +10,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-import java.awt.geom.Rectangle2D;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
@@ -19,40 +18,45 @@ import java.sql.SQLException;
 public class addProjectServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    public void init(){}
+
+    private ProjetDao projetDao = null;
+
+    public void init(){
+        projetDao = new ProjetDao();
+        //System.out.println("Servlet addProjectServlet initialisée !");
+    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         ConnectToDb connectToDb = new ConnectToDb();
         connectToDb.getConnection();
 
-        RequestDispatcher rs = request.getRequestDispatcher("view/home.jsp");
+        RequestDispatcher rs = request.getRequestDispatcher("/view/AddProject.jsp");
         rs.forward(request,response);
     }
     protected void doPost(HttpServletRequest request,HttpServletResponse response)
-        throws ServletException, IOException{
-
-        String nom = request.getParameter("nom");
-        String description = request.getParameter("description");
-        Date dateDebut = Date.valueOf(request.getParameter("dateDebut"));
-        Date dateFin = Date.valueOf(request.getParameter("dateFin"));
-        String budgets = request.getParameter("budget");
-        double budget = Double.valueOf(budgets);
-
-
-        Projet projet = new Projet();
-
-        projet.setNom(nom);
-        projet.setDescription(description);
-        projet.setDateDebut(dateDebut);
-        projet.setDateFin(dateFin);
-        projet.setBudget(budget);
+        throws ServletException, IOException {
 
         try {
+            String nom = request.getParameter("nom");
+            String description = request.getParameter("description");
+            String dateDebut = request.getParameter("date_debut");
+            String dateFin = request.getParameter("date_fin");
+            double budget = Double.parseDouble(request.getParameter("budget"));
+
+            Projet projet = new Projet(nom, description, dateDebut, dateFin, budget);
+
+            projetDao.addProjet(projet); //insérer les données
+
+            response.sendRedirect("projets.jsp?success=1");
+
+        }catch (Exception e){
+            e.printStackTrace();
+            response.sendRedirect("AddProject.jsp?error=1");
 
         }
+
+
     }
-
-
 
 }

@@ -14,7 +14,7 @@
             <div class="alert alert-danger">Erreur lors de l'ajout du projet. Veuillez réessayer.</div>
         <% } %>
 
-        <form action="${pageContext.request.contextPath}/addProject" method="post">
+        <form action="/ConstructionXpert/addProject" method="post">
             <div class="mb-3">
                 <label for="nom" class="form-label">Nom du Projet</label>
                 <input type="text" class="form-control" id="nom" name="nom" required>

@@ -6,13 +6,12 @@ public class Projet {
     private int id;
     private String nom;
     private String description;
-    private Date dateDebut ;
-    private Date dateFin;
+    private String dateDebut ;
+    private String dateFin;
     private Double budget;
 
-public Projet(){}
 
-    public Projet(int id, String nom, String description, Date dateDebut, Date dateFin, Double budget) {
+    public Projet(int id, String nom, String description, String dateDebut, String dateFin, Double budget) {
         this.id = id;
         this.nom = nom;
         this.description = description;
@@ -21,7 +20,8 @@ public Projet(){}
         this.budget = budget;
     }
 
-    public Projet(String nom, String description, Date dateDebut, Date dateFin, Double budget) {
+    public Projet(String nom, String description, String dateDebut, String dateFin, Double budget) {
+
         this.nom = nom;
         this.description = description;
         this.dateDebut = dateDebut;
@@ -53,19 +53,19 @@ public Projet(){}
         this.description = description;
     }
 
-    public Date getDateDebut() {
+    public String getDateDebut() {
         return dateDebut;
     }
 
-    public void setDateDebut(Date dateDebut) {
+    public void setDateDebut(String dateDebut) {
         this.dateDebut = dateDebut;
     }
 
-    public Date getDateFin() {
+    public String getDateFin() {
         return dateFin;
     }
 
-    public void setDateFin(Date dateFin) {
+    public void setDateFin(String dateFin) {
         this.dateFin = dateFin;
     }
 
