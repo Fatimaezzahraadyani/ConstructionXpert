@@ -36,8 +36,8 @@
                     <td><%= projet.getDateFin() %></td>
                     <td><%= projet.getBudget() %> €</td>
                     <td>
-                        <a href="editProject?id=<%= projet.getId() %>" class="btn btn-warning btn-sm">Modifier</a>
-                        <a href="deleteProject?id=<%= projet.getId() %>" class="btn btn-danger btn-sm">Supprimer</a>
+                        <a href="UpdateProject?id=<%= projet.getId() %>" class="btn btn-warning btn-sm">Modifier</a>
+                        <a href="DeleteProject?id=<%= projet.getId() %>" class="btn btn-danger btn-sm">Supprimer</a>
                     </td>
                 </tr>
                 <%
@@ -52,7 +52,7 @@
                 %>
             </tbody>
         </table>
-        <a href="view/AddProject.jsp" class="btn btn-primary" >Ajouter un Projet</a>
+        <a href="AddProject.jsp" class="btn btn-primary" >Ajouter un Projet</a>
     </div>
 </body>
 </html>

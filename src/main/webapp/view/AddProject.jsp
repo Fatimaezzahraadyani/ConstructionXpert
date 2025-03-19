@@ -11,7 +11,7 @@
         <h2>Ajouter un Nouveau Projet</h2>
 
         <% if (request.getParameter("error") != null) { %>
-            <div class="alert alert-danger">Erreur lors de l'ajout du projet. Veuillez réessayer.</div>
+            <div class="alert alert-danger">Erreur lors de l ajout du projet. Veuillez réessayer.</div>
         <% } %>
 
         <form action="/ConstructionXpert/addProject" method="post">

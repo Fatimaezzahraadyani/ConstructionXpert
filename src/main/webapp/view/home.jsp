@@ -18,7 +18,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="projets.jsp">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Project.jsp">Projets</a></li>
                     <li class="nav-item"><a class="nav-link" href="taches.jsp">Tâches</a></li>
                     <li class="nav-item"><a class="nav-link" href="ressources.jsp">Ressources</a></li>
                 </ul>
@@ -37,7 +37,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Projets</h5>
                         <p class="card-text">Créer et gérer vos projets.</p>
-                        <a href="projets.jsp" class="btn btn-primary">Accéder</a>
+                        <a href="Project.jsp" class="btn btn-primary">Accéder</a>
                     </div>
                 </div>
             </div>

@@ -27,7 +27,7 @@ public class DisplayProjectServlet extends HttpServlet {
         List<Projet> projets = projetDao.getAllProjects();
 
         request.setAttribute("projets", projets);
-        RequestDispatcher rs = request.getRequestDispatcher("/view/Project.jsp");
+        RequestDispatcher rs = request.getRequestDispatcher("view/Project.jsp");
         rs.forward(request, response);
 
     }

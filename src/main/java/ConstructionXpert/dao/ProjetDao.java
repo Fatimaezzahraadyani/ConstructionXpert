@@ -11,6 +11,7 @@ public class ProjetDao extends ConnectToDb {
     private static final String UPDATE_PROJECT = "UPDATE projets SET nom = ?, description = ?, dateDebut = ?, dateFin = ?, budget = ? WHERE id = ?";
     private static final String GET_PROJECT_BY_ID = "SELECT * FROM projets WHERE id = ?";
     private static final String GET_ALL_PROJECT = "SELECT * FROM projets";
+    private static final String DELETE_PROJECT_BY_ID = "DELETE projets WHERE id = ?";
 
 
     public ProjetDao() {
@@ -51,9 +52,10 @@ public class ProjetDao extends ConnectToDb {
         ) {
             stmt.setString(1, projet.getNom());
             stmt.setString(2, projet.getDescription());
-            stmt.setString(3, String.valueOf(projet.getDateDebut()));
-            stmt.setString(4, String.valueOf(projet.getDateFin()));
+            stmt.setString(3, projet.getDateDebut());
+            stmt.setString(4, projet.getDateFin());
             stmt.setDouble(5, projet.getBudget());
+            stmt.setInt(6, projet.getId());
 
             int rowUpdated = stmt.executeUpdate();
 
@@ -121,4 +123,17 @@ public class ProjetDao extends ConnectToDb {
         }
         return projets;
     }
+    public void DeletProject(int projetId){
+            try (
+                    Connection con = getConnection();
+                    PreparedStatement stmt = con.prepareStatement(DELETE_PROJECT_BY_ID);
+            ){
+                stmt.setInt(1, projetId);
+                stmt.executeUpdate();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+
 }
