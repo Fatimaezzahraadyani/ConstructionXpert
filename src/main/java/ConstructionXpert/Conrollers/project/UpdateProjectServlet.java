@@ -60,7 +60,7 @@ public class UpdateProjectServlet extends HttpServlet {
         //ProjetDao projetDao = new ProjetDao();
         projetDao.editProjet(projet);
 
-        response.sendRedirect("view/Project.jsp?success=update");
+        response.sendRedirect("AllProject");
 
     }catch (Exception e){
             e.printStackTrace();

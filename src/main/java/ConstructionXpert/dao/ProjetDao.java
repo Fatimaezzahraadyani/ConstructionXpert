@@ -11,7 +11,7 @@ public class ProjetDao extends ConnectToDb {
     private static final String UPDATE_PROJECT = "UPDATE projets SET nom = ?, description = ?, dateDebut = ?, dateFin = ?, budget = ? WHERE id = ?";
     private static final String GET_PROJECT_BY_ID = "SELECT * FROM projets WHERE id = ?";
     private static final String GET_ALL_PROJECT = "SELECT * FROM projets";
-    private static final String DELETE_PROJECT_BY_ID = "DELETE projets WHERE id = ?";
+    private static final String DELETE_PROJECT_BY_ID = "DELETE FROM projets WHERE id = ?";
 
 
     public ProjetDao() {

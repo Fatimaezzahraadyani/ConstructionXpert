@@ -24,7 +24,7 @@ public class DeleteProjectServlet extends HttpServlet {
 
             int id = Integer.parseInt(request.getParameter("id"));
             projetDao.DeletProject(id);
-            response.sendRedirect("Project.jsp?deleteSuccess=1"); // Redirection après suppression
+            response.sendRedirect("AllProject"); // Redirection après suppression
         } catch (Exception e) {
             e.printStackTrace();
             response.sendRedirect("Project.jsp?deleteError=1");

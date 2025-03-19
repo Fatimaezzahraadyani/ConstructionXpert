@@ -26,6 +26,12 @@ public class DisplayProjectServlet extends HttpServlet {
         throws ServletException , IOException{
         List<Projet> projets = projetDao.getAllProjects();
 
+        if(projets == null || projets.isEmpty()){
+            System.out.println("Aucun projet trouvé dans la base de donées");
+        }else {
+            System.out.println("Nombre de projets trouvés: " + projets.size());
+        }
+
         request.setAttribute("projets", projets);
         RequestDispatcher rs = request.getRequestDispatcher("view/Project.jsp");
         rs.forward(request, response);
