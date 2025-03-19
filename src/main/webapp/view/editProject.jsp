@@ -6,7 +6,11 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 
-
+<%
+    int projetId = Integer.parseInt(request.getParameter("id"));
+    ProjetDao projetDao = new ProjetDao();
+    Projet projet = projetDao.getProjectbyId(projetId);
+%>
 
 <!DOCTYPE html>
 <html lang="fr">

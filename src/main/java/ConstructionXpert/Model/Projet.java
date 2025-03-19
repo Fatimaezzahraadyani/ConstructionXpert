@@ -10,6 +10,9 @@ public class Projet {
     private String dateFin;
     private Double budget;
 
+    //Projet projet = new Projet();
+
+    public Projet (){}
 
     public Projet(int id, String nom, String description, String dateDebut, String dateFin, Double budget) {
         this.id = id;
