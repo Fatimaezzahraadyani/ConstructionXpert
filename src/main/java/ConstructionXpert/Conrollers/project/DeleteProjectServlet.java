@@ -15,6 +15,7 @@ public class DeleteProjectServlet extends HttpServlet {
     ProjetDao projetDao;
 
     public void init(){
+
         projetDao = new ProjetDao();
     }
 
@@ -23,7 +24,7 @@ public class DeleteProjectServlet extends HttpServlet {
         try {
 
             int id = Integer.parseInt(request.getParameter("id"));
-            projetDao.DeletProject(id);
+            projetDao.DeleteProject(id);
             response.sendRedirect("AllProject"); // Redirection après suppression
         } catch (Exception e) {
             e.printStackTrace();

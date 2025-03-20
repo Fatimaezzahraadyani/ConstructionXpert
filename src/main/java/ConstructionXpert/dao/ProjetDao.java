@@ -123,7 +123,7 @@ public class ProjetDao extends ConnectToDb {
         }
         return projets;
     }
-    public void DeletProject(int projetId){
+    public void DeleteProject(int projetId){
             try (
                     Connection con = getConnection();
                     PreparedStatement stmt = con.prepareStatement(DELETE_PROJECT_BY_ID);

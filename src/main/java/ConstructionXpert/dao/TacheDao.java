@@ -13,6 +13,7 @@ public class TacheDao extends ConnectToDb {
     private static final String GET_TACHES_BY_PROJET ="SELECT * FROM taches WHERE projet_id = ?";
     private static final String GET_TACHE_BY_ID = "SELECT * FROM taches WHERE idTache = ?";
     private static final String UPDATE_TACHE ="UPDATE taches SET descriptionTache = ?, dateDebutTache = ?, dateFinTache = ? WHERE idTache = ?";
+    private static final String DELETE_TACHE_BY_ID  = "DELETE FROM taches WHERE idTache = ?";
 
 
     public void addTache(Tache tache) {
@@ -56,6 +57,8 @@ public class TacheDao extends ConnectToDb {
         }
         return taches;
     }
+
+
     public Tache getTachebyId(int idTache) {
         Tache tache = null;
 
@@ -107,4 +110,18 @@ public class TacheDao extends ConnectToDb {
             e.printStackTrace();
         }
     }
+
+        public void DeleteTache(int TacheId){
+                try (
+                        Connection con = getConnection();
+                        PreparedStatement stmt = con.prepareStatement(DELETE_TACHE_BY_ID);
+                ){
+                    stmt.setInt(1, TacheId);
+                    stmt.executeUpdate();
+
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+        }
 }
+

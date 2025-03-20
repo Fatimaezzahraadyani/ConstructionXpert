@@ -49,7 +49,7 @@
                         </a>
 
                         <!-- Lien pour supprimer une tâche avec confirmation -->
-                        <a href="#" class="btn btn-danger btn-sm" onclick="confirmDelete(<%= tache.getIdTache() %>)">
+                        <a href="DeleteTache?id=<%= tache.getIdTache() %>" class="btn btn-danger btn-sm" onclick="confirmDelete(<%= tache.getIdTache() %>)">
                             <i class="fas fa-trash"></i> Supprimer
                         </a>
                     </td>
