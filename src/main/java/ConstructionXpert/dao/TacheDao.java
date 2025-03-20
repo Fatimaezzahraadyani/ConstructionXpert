@@ -10,7 +10,7 @@ import java.util.List;
 
 public class TacheDao extends ConnectToDb {
     private static final String ADD_TACHE = "INSERT INTO taches (descriptionTache, dateDebutTache, dateFinTache, projet_id) VALUES (?, ?, ?, ?)";
-    private static final String GET_TACHES_BY_PROJET ="SELECT * FROM taches WHERE projetId = ?";
+    private static final String GET_TACHES_BY_PROJET ="SELECT * FROM taches WHERE projet_id = ?";
     private static final String GET_TACHE_BY_ID = "SELECT * FROM taches WHERE idTache = ?";
     private static final String UPDATE_TACHE ="UPDATE taches SET descriptionTache = ?, dateDebutTache = ?, dateFinTache = ? WHERE idTache = ?";
 

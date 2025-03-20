@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDate;
 
-@WebServlet("/UpdateServlet")
+@WebServlet("/UpdateTache")
 public class UpdateTacheServlet extends HttpServlet {
 
     TacheDao tacheDao;
@@ -27,6 +27,13 @@ public class UpdateTacheServlet extends HttpServlet {
             throws ServletException, IOException {
         ConnectToDb connectToDb = new ConnectToDb();
         connectToDb.getConnection();
+        String idTacheStr = request.getParameter("idTache");
+
+        if (idTacheStr == null || idTacheStr.isEmpty()) {
+            System.out.println("Erreur : idTache est null ou vide !");
+            response.sendRedirect("ListeTaches.jsp?error=missingId");
+            return;
+        }
         try {
 
             int tacheId = Integer.parseInt(request.getParameter("id"));
@@ -56,8 +63,8 @@ public class UpdateTacheServlet extends HttpServlet {
             int TacheId = Integer.parseInt(request.getParameter("id"));
 
             String descriptionTache = request.getParameter("descriptionTache");
-            LocalDate dateDebutTache = LocalDate.parse(request.getParameter("date_debutTache"));
-            LocalDate dateFinTache = LocalDate.parse(request.getParameter("date_finTache"));
+            LocalDate dateDebutTache = LocalDate.parse(request.getParameter("dateDebutTache"));
+            LocalDate dateFinTache = LocalDate.parse(request.getParameter("dateFinTache"));
 
 
             Tache tache = new Tache(TacheId,  descriptionTache, dateDebutTache, dateFinTache);
@@ -69,7 +76,7 @@ public class UpdateTacheServlet extends HttpServlet {
 
         }catch (Exception e){
             e.printStackTrace();
-            response.sendRedirect("editProject.jsp?error=1");
+            response.sendRedirect("editTache.jsp?error=1");
         }
     }
 
@@ -77,4 +84,4 @@ public class UpdateTacheServlet extends HttpServlet {
 
 
 
-}
+

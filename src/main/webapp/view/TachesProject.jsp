@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="ConstructionXpert.Model.Tache" %>
+<%@ page import="ConstructionXpert.Model.Projet" %>
+
 <%@ page import="ConstructionXpert.dao.TacheDao" %>
 <%@ page import="ConstructionXpert.dao.ProjetDao" %>
 
@@ -13,7 +15,9 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h2>Tâches associées au projet</h2>
+
+        <h2>Tâches associées au projet : <%= request.getAttribute("nom") %></h2>
+
 
         <table class="table table-bordered">
             <thead class="table-dark">
@@ -63,6 +67,9 @@
 
         <!-- Lien pour ajouter une tâche au projet -->
         <a href="AddTache?projetId=<%= request.getAttribute("projetId") %>" class="btn btn-primary">Ajouter une Tâche</a>
+
+        <a href="AllProject" class="btn btn-secondary">Retour aux projets</a>
+
     </div>
 
     <script>
