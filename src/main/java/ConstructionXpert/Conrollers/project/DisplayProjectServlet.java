@@ -33,7 +33,7 @@ public class DisplayProjectServlet extends HttpServlet {
         }
 
         request.setAttribute("projets", projets);
-        RequestDispatcher rs = request.getRequestDispatcher("view/Project.jsp");
+        RequestDispatcher rs = request.getRequestDispatcher("/view/Project.jsp");
         rs.forward(request, response);
 
     }

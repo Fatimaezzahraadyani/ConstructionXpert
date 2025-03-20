@@ -1,6 +1,8 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ page import="ConstructionXpert.Model.Tache" %>
+<%@ page import="ConstructionXpert.Model.Projet" %>
 <%@ page import="java.sql.Date" %>
+<%@ page import="java.util.*" %>
 <%@ page import="ConstructionXpert.dao.TacheDao" %>
 <%@ page import="ConstructionXpert.dao.ProjetDao" %>
 <html>
@@ -12,20 +14,28 @@
     <div class="container mt-5">
         <h2>Ajouter une nouvelle tâche</h2>
 
-        <form action="AddTacheServlet" method="POST">
+        <form action="AddTache" method="post">
             <!-- Le projet auquel la tâche appartient -->
             <div class="mb-3">
                 <label for="projetId" class="form-label">Projet</label>
-                <select class="form-select" name="projetId" id="projetId" required>
+                <select name="projetId" class="form-control" required>
+                    <option value="">-- Sélectionner un projet --</option>
                     <%
-                        // Récupérer tous les projets pour permettre à l'utilisateur de sélectionner un projet
-                        ProjetDao projetDao = new ProjetDao();
-                        List<Projet> projets = projetDao.getAllProjets();
-                        for (Projet projet : projets) {
+                        List<Projet> projets = (List<Projet>) request.getAttribute("projets");
+                        if (projets != null && !projets.isEmpty()) {
+                            for (Projet projet : projets) {
                     %>
-                        <option value="<%= projet.getId() %>"><%= projet.getNom() %></option>
-                    <% } %>
+                                <option value="<%= projet.getId() %>"><%= projet.getNom() %></option>
+                    <%
+                            }
+                        } else {
+                    %>
+                        <option disabled>Aucun projet disponible</option>
+                    <%
+                        }
+                    %>
                 </select>
+
             </div>
 
             <!-- Description de la tâche -->
@@ -43,7 +53,7 @@
             <!-- Date de fin -->
             <div class="mb-3">
                 <label for="dateFin" class="form-label">Date de fin</label>
-                <input type="date" class="form-control" name="dateFin" id="dateFin" required>
+                <input type="date" class="form-control" name="dateFinTache" id="dateFin" required>
             </div>
 
             <button type="submit" class="btn btn-primary">Ajouter la tâche</button>

@@ -48,7 +48,7 @@ public class addProjectServlet extends HttpServlet {
 
             projetDao.addProjet(projet); //insérer les données
 
-            response.sendRedirect("view/Project.jsp?success=1");
+            response.sendRedirect("AllProject?success=1");
 
         }catch (Exception e){
             e.printStackTrace();

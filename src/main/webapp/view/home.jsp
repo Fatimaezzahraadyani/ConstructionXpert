@@ -37,7 +37,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Projets</h5>
                         <p class="card-text">Créer et gérer vos projets.</p>
-                        <a href="Project.jsp" class="btn btn-primary">Accéder</a>
+                        <a href="AllProject" class="btn btn-primary">Accéder</a>
                     </div>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Tâches</h5>
                         <p class="card-text">Attribuez des tâches à vos projets.</p>
-                        <a href="taches.jsp" class="btn btn-primary">Accéder</a>
+                        <a href="Project.jsp" class="btn btn-primary">Accéder</a>
                     </div>
                 </div>
             </div>

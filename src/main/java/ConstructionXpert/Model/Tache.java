@@ -1,12 +1,21 @@
 package ConstructionXpert.Model;
 
+import java.time.LocalDate;
+
 public class Tache {
     private int idTache;
     private String descriptionTache;
-    private String dateDebutTache;
-    private String dateFin;
+    private LocalDate dateDebutTache;
+    private LocalDate dateFinTache;
     private int projetId;
 
+    public Tache(int idTache, String descriptionTache, LocalDate dateDebutTache, LocalDate dateFinTache, int projetId) {
+        this.idTache = idTache;
+        this.descriptionTache = descriptionTache;
+        this.dateDebutTache = dateDebutTache;
+        this.dateFinTache = dateFinTache;
+        this.projetId = projetId;
+    }
 
     public int getIdTache() {
         return idTache;
@@ -24,20 +33,20 @@ public class Tache {
         this.descriptionTache = descriptionTache;
     }
 
-    public String getDateDebutTache() {
+    public LocalDate getDateDebutTache() {
         return dateDebutTache;
     }
 
-    public void setDateDebutTache(String dateDebutTache) {
+    public void setDateDebutTache(LocalDate dateDebutTache) {
         this.dateDebutTache = dateDebutTache;
     }
 
-    public String getDateFin() {
-        return dateFin;
+    public LocalDate getDateFinTache() {
+        return dateFinTache;
     }
 
-    public void setDateFin(String dateFin) {
-        this.dateFin = dateFin;
+    public void setDateFinTache(LocalDate dateFin) {
+        this.dateFinTache = dateFin;
     }
 
     public int getProjetId() {
@@ -46,15 +55,5 @@ public class Tache {
 
     public void setProjetId(int projetId) {
         this.projetId = projetId;
-    }
-
-    public Tache(int idTache, String descriptionTache, String dateDebutTache, String dateFin, int projetId) {
-        this.idTache = idTache;
-        this.descriptionTache = descriptionTache;
-        this.dateDebutTache = dateDebutTache;
-        this.dateFin = dateFin;
-        this.projetId = projetId;
-
-
     }
 }

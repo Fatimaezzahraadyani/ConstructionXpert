@@ -2,24 +2,24 @@ package ConstructionXpert.dao;
 
 import ConstructionXpert.Model.Tache;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 public class TacheDao extends ConnectToDb {
-    private static final String ADD_TACHE = "INSERT INTO taches ((description, dateDebut, dateFin, projetId) VALUES (?, ?, ?, ?))";
+    private static final String ADD_TACHE = "INSERT INTO taches (descriptionTache, dateDebutTache, dateFinTache, projet_id) VALUES (?, ?, ?, ?)";
     private static final String GET_TACHES_BY_PROJET ="SELECT * FROM taches where projetId = ?";
+
+
     public void addTache(Tache tache) {
         try(
                 Connection con = getConnection();
                 PreparedStatement stmt = con.prepareStatement(ADD_TACHE)
         ) {
             stmt.setString(1, tache.getDescriptionTache());
-            stmt.setString(2, tache.getDateDebutTache());
-            stmt.setString(3,tache.getDateFin());
+            stmt.setDate(2, Date.valueOf(tache.getDateDebutTache()));
+            stmt.setDate(3,Date.valueOf(tache.getDateFinTache()));
             stmt.setInt(4, tache.getProjetId());
 
             stmt.executeUpdate();
@@ -34,17 +34,17 @@ public class TacheDao extends ConnectToDb {
 
         try (
                 Connection con = getConnection();
-                PreparedStatement stmt = con.prepareStatement(ADD_TACHE)
+                PreparedStatement stmt = con.prepareStatement(GET_TACHES_BY_PROJET)
         ){
             stmt.setInt(1,projetId);
 
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()){
-                int id = rs.getInt("id");
+                int id = rs.getInt("idTache");
                 String descriptionTache = rs.getString("descriptionTache");
-                String dateDebutTache = rs.getString("dateDebuTache");
-                String dateFinTache = rs.getString("dateFinTache");
+                LocalDate dateDebutTache = LocalDate.parse(rs.getString("dateDebutTache"));
+                LocalDate dateFinTache = LocalDate.parse(rs.getString("dateFinTache"));
 
                 taches.add(new Tache(id,descriptionTache,dateDebutTache,dateFinTache,projetId));
             }
