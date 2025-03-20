@@ -17,6 +17,9 @@ public class Tache {
         this.projetId = projetId;
     }
 
+    public Tache(int id, String descriptionTache, LocalDate dateDebutTache, LocalDate dateFinTache) {
+    }
+
     public int getIdTache() {
         return idTache;
     }

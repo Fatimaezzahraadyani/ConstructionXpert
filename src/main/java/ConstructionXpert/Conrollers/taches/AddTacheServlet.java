@@ -38,7 +38,7 @@ public class AddTacheServlet extends HttpServlet {
             // Récupérer la liste des projets
             List<Projet> projets = projetDao.getAllProjects();
             request.setAttribute("projets", projets);
-            System.out.println("✅ Liste des projets récupérée : " + projets.size());
+            System.out.println("Liste des projets récupérée : " + projets.size());
 
             // Affichage du formulaire d'ajout de tâche
             RequestDispatcher rs = request.getRequestDispatcher("/view/AddTache.jsp");
