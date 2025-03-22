@@ -27,13 +27,13 @@ public class UpdateTacheServlet extends HttpServlet {
             throws ServletException, IOException {
         ConnectToDb connectToDb = new ConnectToDb();
         connectToDb.getConnection();
-        String idTacheStr = request.getParameter("idTache");
+        //String idTacheStr = request.getParameter("idTache");
 
-        if (idTacheStr == null || idTacheStr.isEmpty()) {
+        /*if (idTacheStr == null || idTacheStr.isEmpty()) {
             System.out.println("Erreur : idTache est null ou vide !");
-            response.sendRedirect("ListeTaches.jsp?error=missingId");
+            response.sendRedirect("TachesProject.jsp?error=missingId");
             return;
-        }
+        }*/
         try {
 
             int tacheId = Integer.parseInt(request.getParameter("id"));
@@ -45,7 +45,7 @@ public class UpdateTacheServlet extends HttpServlet {
             request.setAttribute("tache", tache);
 
             // Afficher la page de modification
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/view/UpdateTache.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("view/editTache.jsp");
             dispatcher.forward(request, response);
         } catch (Exception e) {
             e.printStackTrace();
@@ -81,7 +81,3 @@ public class UpdateTacheServlet extends HttpServlet {
     }
 
 }
-
-
-
-

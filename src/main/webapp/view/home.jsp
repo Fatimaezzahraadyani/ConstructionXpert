@@ -46,7 +46,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Tâches</h5>
                         <p class="card-text">Attribuez des tâches à vos projets.</p>
-                        <a href="Project.jsp" class="btn btn-primary">Accéder</a>
+                        <a href="AddTache" class="btn btn-primary">Accéder</a>
                     </div>
                 </div>
             </div>

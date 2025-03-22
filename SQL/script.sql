@@ -37,3 +37,8 @@ CHANGE COLUMN id idTache INT AUTO_INCREMENT PRIMARY KEY,
 CHANGE COLUMN dateDebut dateDebutTache DATE,
 CHANGE COLUMN dateFin dateFinTache DATE;
 
+INSERT INTO taches (descriptionTache, dateDebutTache, dateFinTache, projet_id) VALUES (?, ?, ?, ?);
+ALTER TABLE taches CHANGE projet_id projetId int;
+ALTER TABLE taches CHANGE projetId projet_id int;
+DESC taches;
+

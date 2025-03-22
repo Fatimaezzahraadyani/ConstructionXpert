@@ -16,7 +16,7 @@
 <body>
     <div class="container mt-5">
 
-        <h2>Tâches associées au projet : <%= request.getAttribute("nom") %></h2>
+        <h2>Tâches associées au projet :</h2>
 
 
         <table class="table table-bordered">
