@@ -9,6 +9,12 @@
 <body>
     <div class="container mt-5">
         <h2>Ajouter un Nouveau Projet</h2>
+         <!-- Afficher le message d'erreur s'il y en a -->
+                <% if (request.getAttribute("error") != null) { %>
+                    <div class="alert alert-danger">
+                        <%= request.getAttribute("error") %>
+                    </div>
+                <% } %>
 
         <% if (request.getParameter("error") != null) { %>
             <div class="alert alert-danger">Erreur lors de l ajout du projet. Veuillez réessayer.</div>

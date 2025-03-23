@@ -1,5 +1,6 @@
 package ConstructionXpert.Model;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Projet {
@@ -30,6 +31,9 @@ public class Projet {
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
         this.budget = budget;
+    }
+
+    public Projet(String nom, String description, LocalDate dateDebut, LocalDate dateFin, double budget) {
     }
 
     public int getId() {

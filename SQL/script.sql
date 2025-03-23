@@ -41,4 +41,6 @@ INSERT INTO taches (descriptionTache, dateDebutTache, dateFinTache, projet_id) V
 ALTER TABLE taches CHANGE projet_id projetId int;
 ALTER TABLE taches CHANGE projetId projet_id int;
 DESC taches;
+SELECT * FROM taches WHERE dateDebutTache IS NULL;
+
 

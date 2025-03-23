@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TacheDao extends ConnectToDb {
-    private static final String ADD_TACHE = "INSERT INTO taches (descriptionTache, dateDebutTache, dateFinTache, projet_id) VALUES (?, ?, ?, ?)";
+    private static final String ADD_TACHE = "INSERT INTO taches (descriptionTache, dateDebutTache, dateFinTache, projetId) VALUES (?, ?, ?, ?)";
     private static final String GET_TACHES_BY_PROJET ="SELECT * FROM taches WHERE projetId = ?";
     private static final String GET_TACHE_BY_ID = "SELECT * FROM taches WHERE idTache = ?";
     private static final String UPDATE_TACHE ="UPDATE taches SET descriptionTache = ?, dateDebutTache = ?, dateFinTache = ? WHERE idTache = ?";
@@ -96,10 +96,21 @@ public class TacheDao extends ConnectToDb {
                 Connection con = getConnection();
                 PreparedStatement stmt = con.prepareStatement(UPDATE_TACHE)
         ) {
-            stmt.setString(2, tache.getDescriptionTache());
-            stmt.setDate(3, Date.valueOf(tache.getDateDebutTache()));
-            stmt.setDate(4, Date.valueOf(tache.getDateFinTache()));
-            stmt.setInt(6, tache.getIdTache());
+            stmt.setString(1, tache.getDescriptionTache());
+            if (tache.getDateDebutTache() != null) {
+                stmt.setDate(2, java.sql.Date.valueOf(tache.getDateDebutTache()));
+            } else {
+                stmt.setNull(2, java.sql.Types.DATE);
+            }
+
+            if (tache.getDateFinTache() != null) {
+                stmt.setDate(3, java.sql.Date.valueOf(tache.getDateFinTache()));
+            } else {
+                stmt.setNull(3, java.sql.Types.DATE);
+            }
+            //stmt.setDate(3, Date.valueOf(tache.getDateDebutTache()));
+            //stmt.setDate(4, Date.valueOf(tache.getDateFinTache()));
+            stmt.setInt(4, tache.getIdTache());
 
             int rowUpdated = stmt.executeUpdate();
 

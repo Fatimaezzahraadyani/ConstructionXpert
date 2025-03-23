@@ -17,6 +17,7 @@ import java.time.LocalDate;
 
 @WebServlet("/UpdateTache")
 public class UpdateTacheServlet extends HttpServlet {
+    private static final long serialVersionUID = 1L;
 
     TacheDao tacheDao;
     public void init (){
@@ -57,7 +58,6 @@ public class UpdateTacheServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException{
-
         try{
 
             int TacheId = Integer.parseInt(request.getParameter("id"));
@@ -76,7 +76,7 @@ public class UpdateTacheServlet extends HttpServlet {
 
         }catch (Exception e){
             e.printStackTrace();
-            response.sendRedirect("editTache.jsp?error=1");
+            response.sendRedirect("view/editTache.jsp?error=1");
         }
     }
 

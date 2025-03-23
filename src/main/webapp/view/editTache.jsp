@@ -15,9 +15,10 @@
             Tache tache = (Tache) request.getAttribute("tache");
             if (tache != null) {
         %>
-        <form action="UpdateProject" method="get" class="shadow p-4 bg-light rounded">
+        <form action="UpdateTache" method="post" class="shadow p-4 bg-light rounded">
             <!-- Champ caché pour l'ID de la tâche -->
             <input type="hidden" name="id" value="<%= tache.getIdTache() %>" />
+            <input type="hidden" name="projetId" value="${tache.projet.ProjetId}">
 
             <div class="mb-3">
                 <label for="descriptionTache" class="form-label">Description de la tâche</label>
@@ -39,10 +40,6 @@
                 <a href="TachesProjet?id=<%= tache.getProjetId() %>" class="btn btn-secondary">Annuler</a>
             </div>
         </form>
-        <%
-            } else {
-        %>
-        <div class="alert alert-danger mt-4 text-center">Erreur : Tâche introuvable.</div>
         <%
             }
         %>

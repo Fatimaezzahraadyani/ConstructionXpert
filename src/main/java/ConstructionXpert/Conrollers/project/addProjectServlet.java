@@ -21,21 +21,22 @@ public class addProjectServlet extends HttpServlet {
 
     private ProjetDao projetDao = null;
 
-    public void init(){
+    public void init() {
         projetDao = new ProjetDao();
         //System.out.println("Servlet addProjectServlet initialisée !");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+            throws ServletException, IOException {
         ConnectToDb connectToDb = new ConnectToDb();
         connectToDb.getConnection();
 
         RequestDispatcher rs = request.getRequestDispatcher("/view/AddProject.jsp");
-        rs.forward(request,response);
+        rs.forward(request, response);
     }
-    protected void doPost(HttpServletRequest request,HttpServletResponse response)
-        throws ServletException, IOException {
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
         try {
             String nom = request.getParameter("nom");
@@ -44,16 +45,52 @@ public class addProjectServlet extends HttpServlet {
             String dateFin = request.getParameter("date_fin");
             double budget = Double.parseDouble(request.getParameter("budget"));
 
-            Projet projet = new Projet(nom, description, dateDebut, dateFin, budget);
+            // Validation des champs
+            if (nom == null || nom.trim().isEmpty()) {
+                request.setAttribute("error", "Le nom du projet est requis.");
+                request.getRequestDispatcher("view/addProject.jsp").forward(request, response);
+                return;
+            }
 
-            projetDao.addProjet(projet); //insérer les données
+            if (description == null || description.trim().isEmpty()) {
+                request.setAttribute("error", "La description du projet est requise.");
+                request.getRequestDispatcher("view/addProject.jsp").forward(request, response);
+                return;
+            }
 
-            response.sendRedirect("AllProject?success=1");
+            if (dateDebut == null || dateFin == null || dateDebut.isEmpty() || dateFin.isEmpty()) {
+                request.setAttribute("error", "Les dates de début et de fin sont requises.");
+                request.getRequestDispatcher("view/addProject.jsp").forward(request, response);
+                return;
+            }
 
-        }catch (Exception e){
-            e.printStackTrace();
-            response.sendRedirect("AddProject.jsp?error=1");
+            // Convertir les dates en objets LocalDate
+            try {
+                java.time.LocalDate dateDebuts = java.time.LocalDate.parse(dateDebut);
+                java.time.LocalDate dateFins = java.time.LocalDate.parse(dateFin);
+
+                // Vérifier si la date de début est avant la date de fin
+                if (dateDebuts.isAfter(dateFins)) {
+                    request.setAttribute("error", "La date de début doit être avant la date de fin.");
+                    request.getRequestDispatcher("view/addProject.jsp").forward(request, response);
+                    return;
+                }
+
+
+                Projet projet = new Projet(nom, description, dateDebut, dateFin, budget);
+
+                projetDao.addProjet(projet); //insérer les données
+
+                response.sendRedirect("AllProject?success=1");
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                response.sendRedirect("AddProject.jsp?error=1");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
-
 }
+
+

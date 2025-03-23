@@ -35,7 +35,7 @@ public class DisplayTacheServlet extends HttpServlet {
             if (projetIdStr == null || projetIdStr.isEmpty()) {
                 System.out.println("Erreur : ID du projet est manquant !");
                 response.sendRedirect("Project.jsp?error=missingId");
-                return;
+            return;
             }
 
             //recuperer l' id du projet
